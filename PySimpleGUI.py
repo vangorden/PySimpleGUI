@@ -38,23 +38,23 @@ This software is available for your use under a MODIFIED LGPL3+ license
 
 This notice, these first 100 lines of code shall remain unchanged
 
- #     #                                        
- ##   ##  ####  #####  # ###### # ###### #####  
- # # # # #    # #    # # #      # #      #    # 
- #  #  # #    # #    # # #####  # #####  #    # 
- #     # #    # #    # # #      # #      #    # 
- #     # #    # #    # # #      # #      #    # 
- #     #  ####  #####  # #      # ###### #####  
+ #     #
+ ##   ##  ####  #####  # ###### # ###### #####
+ # # # # #    # #    # # #      # #      #    #
+ #  #  # #    # #    # # #####  # #####  #    #
+ #     # #    # #    # # #      # #      #    #
+ #     # #    # #    # # #      # #      #    #
+ #     #  ####  #####  # #      # ###### #####
 
 
-888      .d8888b.  8888888b.  888      .d8888b.          
-888     d88P  Y88b 888   Y88b 888     d88P  Y88b         
-888     888    888 888    888 888          .d88P         
-888     888        888   d88P 888         8888"    888   
-888     888  88888 8888888P"  888          "Y8b. 8888888 
-888     888    888 888        888     888    888   888   
-888     Y88b  d88P 888        888     Y88b  d88P         
-88888888 "Y8888P88 888        88888888 "Y8888P"          
+888      .d8888b.  8888888b.  888      .d8888b.
+888     d88P  Y88b 888   Y88b 888     d88P  Y88b
+888     888    888 888    888 888          .d88P
+888     888        888   d88P 888         8888"    888
+888     888  88888 8888888P"  888          "Y8b. 8888888
+888     888    888 888        888     888    888   888
+888     Y88b  d88P 888        888     Y88b  d88P
+88888888 "Y8888P88 888        88888888 "Y8888P"
 
 
 And just what is that?  Well, it's LPGL3+ and these FOUR simple stipulations.
@@ -71,7 +71,7 @@ And just what is that?  Well, it's LPGL3+ and these FOUR simple stipulations.
        2. PyPI - pip install PySimpleGUI is the customary way of obtaining the latest release
 
        THE official documentation location is:
-          Read the Docs (via http://www.PySimpleGUI.org).  Currently is pointed at: 
+          Read the Docs (via http://www.PySimpleGUI.org).  Currently is pointed at:
           https://pysimplegui.readthedocs.io/en/latest/
    If you've obtained this software in any other way, then those listed here, then SUPPORT WILL NOT BE PROVIDED.
 
@@ -86,7 +86,7 @@ Demo Programs have been written as a "jump start" mechanism to get your running 
 Some general bits of advice:
 Upgrade your software!  pip install --upgrade --no-cache-dir PySimpleGUI
 If you're thinking of filing an Issue or posting a problem, Upgrade your software first
-There are constantly something new and interesting coming out of this project so stay current if you can 
+There are constantly something new and interesting coming out of this project so stay current if you can
 
 The FASTEST WAY to learn PySimpleGUI is to begin to play with it, and to read the documentation.
 http://www.PySimpleGUI.org
@@ -219,8 +219,8 @@ def _timeit_summary(func):
 
     It's a mess.... really... it's a mess internally... it's the external-facing interfaces that
     are not a mess.  The Elements and the methods for them are well-designed.
-    PEP8 - this code is far far from PEP8 compliant. 
-    It was written PRIOR to learning that PEP8 existed. 
+    PEP8 - this code is far far from PEP8 compliant.
+    It was written PRIOR to learning that PEP8 existed.
 
     I'll be honest.... started learning Python in Nov 2017, started writing PySimpleGUI in Feb 2018.
     Released PySimpleGUI in July 2018.  I knew so little about Python that my parameters were all named
@@ -228,14 +228,14 @@ def _timeit_summary(func):
     parameters to lower case.  Unfortunately, the internal naming conventions have been set.  Mixing them
     with PEP8 at this moment would be even MORE confusing.
 
-    Code I write now, outside PySimpleGUI, IS PEP8 compliant.  
+    Code I write now, outside PySimpleGUI, IS PEP8 compliant.
 
     The variable and function naming in particular are not compliant.  There is
     liberal use of CamelVariableAndFunctionNames, but for anything externally facing, there are aliases
     available for all functions.  If you've got a serious enough problem with 100% PEP8 compliance
     that you'll pass on this package, then that's your right and I invite you to do so.  However, if
     perhaps you're a practical thinker where it's the results that matter, then you'll have no
-    trouble with this code base.  There is consisency however.  
+    trouble with this code base.  There is consisency however.
 
     I truly hope you get a lot of enjoyment out of using PySimpleGUI.  It came from good intentions.
 """
@@ -5859,7 +5859,7 @@ class Table(Element):
                  row_height=None, font=None, justification='right', text_color=None, background_color=None,
                  alternating_row_color=None, header_text_color=None, header_background_color=None, header_font=None, row_colors=None, vertical_scroll_only=True, hide_vertical_scroll=False,
                  size=(None, None), change_submits=False, enable_events=False, bind_return_key=False, pad=None,
-                 key=None, tooltip=None, right_click_menu=None, visible=True, metadata=None):
+                 key=None, tooltip=None, right_click_menu=None, visible=True, metadata=None, starting_row_number=0):
         """
         :param values: ???
         :type values: List[List[Union[str, int, float]]]
@@ -5925,6 +5925,8 @@ class Table(Element):
         :type visible: (bool)
         :param metadata: User metadata that can be set to ANYTHING
         :type metadata: Any
+        :param starting_row_number: When displaying row numbers, where to start
+        :type starting_row_number: (int)
         """
 
         self.Values = values
@@ -5952,7 +5954,7 @@ class Table(Element):
         self.SelectedRows = []
         self.ChangeSubmits = change_submits or enable_events
         self.BindReturnKey = bind_return_key
-        self.StartingRowNumber = 0  # When displaying row numbers, where to start
+        self.StartingRowNumber = starting_row_number  # When displaying row numbers, where to start
         self.RowHeaderText = 'Row'
         self.RightClickMenu = right_click_menu
         self.RowColors = row_colors
